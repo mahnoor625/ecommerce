@@ -1,5 +1,5 @@
 @extends('layouts.admin');
-@section('content');
+@section('content')
 
 <div class="main-content-inner">
 

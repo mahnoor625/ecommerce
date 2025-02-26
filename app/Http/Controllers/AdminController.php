@@ -23,8 +23,7 @@ class AdminController extends Controller
     }
 
     public function AddBrands()
-    {
-       
+    {  
         return view('admin.brands-add');
     }
 
