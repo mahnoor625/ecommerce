@@ -56,18 +56,18 @@
                                 <td>{{$brand->id}}</td>
                                 <td class="pname">
                                     <div class="image">
-                                        <img src="{{asset('upload/brands')}}/{{$brand->image}}" alt="{{$brand->image}}"
+                                        <img src="{{asset('uploads/brands')}}/{{$brand->image}}" alt="{{$brand->image}}"
                                             class="image">
                                     </div>
                                     <div class="name">
                                         <a href="#" class="body-title-2">{{$brand->name}}</a>
                                     </div>
                                 </td>
-                                <td> {{$brand->slud}}</td>
+                                <td> {{$brand->slug}}</td>
                                 <td><a href="#" target="_blank">1</a></td>
                                 <td>
                                     <div class="list-icon-function">
-                                        <a href="{{route('admin.brands.edit',['id'=>$brand->id])}}">
+                                        <a href="{{route('admin.brand.edit',['id'=>$brand->id])}}">
                                             <div class="item edit">
                                                 <i class="icon-edit-3"></i>
                                             </div>
