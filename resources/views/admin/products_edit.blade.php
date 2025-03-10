@@ -1,47 +1,44 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="main-content-inner">
-        <!-- main-content-wrap -->
-        <div class="main-content-wrap">
-            <div class="flex items-center flex-wrap justify-between gap20 mb-27">
-                <h3>Add Product</h3>
-                <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
-                    <li>
-                        <a href="{{ route('admin.products') }}">
-                            <div class="text-tiny">Dashboard</div>
-                        </a>
-                    </li>
-                    <li>
-                        <i class="icon-chevron-right"></i>
-                    </li>
-                    <li>
-                        <a href="all-product.html">
-                            <div class="text-tiny">Products</div>
-                        </a>
-                    </li>
-                    <li>
-                        <i class="icon-chevron-right"></i>
-                    </li>
-                    <li>
-                        <div class="text-tiny">Edit product</div>
-                    </li>
-                </ul>
-            </div>
-            <form class="tf-section-2 form-add-product" method="POST" enctype="multipart/form-data"
-                action="{{ route('admin.products.store') }}">
-                @csrf
-                <div class="wg-box">
-                    <fieldset class="name">
-                        <div class="body-title mb-10">Product name <span class="tf-color-1">*</span>
-                        </div>
-                        <input class="mb-10" type="text" placeholder="Enter product name" name="name" tabindex="0"
-                            value="{{ $product->name }}" aria-required="true" required="">
-                        <div class="text-tiny">Do not exceed 100 characters when entering the product name.</div>
-                    </fieldset>
-                    @error('name')
-                        <span class="alert alert-danger text-center">{{ $message }}</span>
-                    @enderror
-
+<div class="main-content-inner">
+                            <!-- main-content-wrap -->
+                            <div class="main-content-wrap">
+                                <div class="flex items-center flex-wrap justify-between gap20 mb-27">
+                                    <h3>Add Product</h3>
+                                    <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
+                                        <li>
+                                            <a href="{{route('admin.products')}}">
+                                                <div class="text-tiny">Dashboard</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <i class="icon-chevron-right"></i>
+                                        </li>
+                                        <li>
+                                            <a href="all-product.html">
+                                                <div class="text-tiny">Products</div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <i class="icon-chevron-right"></i>
+                                        </li>
+                                        <li>
+                                            <div class="text-tiny">Edit  product</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <form class="tf-section-2 form-add-product" method="POST" enctype="multipart/form-data"
+                                    action="{{route('admin.products.store')}}">
+                                    @csrf
+                                    <div class="wg-box">
+                                        <fieldset class="name">
+                                            <div class="body-title mb-10">Product name <span class="tf-color-1">*</span>
+                                            </div>
+                                            <input class="mb-10" type="text" placeholder="Enter product name" name="name" tabindex="0" value="{{$product->name}}" aria-required="true" required="">
+                                            <div class="text-tiny">Do not exceed 100 characters when entering the product name.</div>
+                                        </fieldset>
+                                        @error('name') <span class="alert alert-danger text-center">{{$message}}</span> @enderror
+                                        
 
                     <fieldset class="name">
                         <div class="body-title mb-10">Slug <span class="tf-color-1">*</span></div>
