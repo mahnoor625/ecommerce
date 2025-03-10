@@ -1,44 +1,48 @@
 @extends('layouts.admin')
 @section('content')
-<div class="main-content-inner">
-                            <!-- main-content-wrap -->
-                            <div class="main-content-wrap">
-                                <div class="flex items-center flex-wrap justify-between gap20 mb-27">
-                                    <h3>Add Product</h3>
-                                    <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
-                                        <li>
-                                            <a href="{{route('admin.products')}}">
-                                                <div class="text-tiny">Dashboard</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <i class="icon-chevron-right"></i>
-                                        </li>
-                                        <li>
-                                            <a href="all-product.html">
-                                                <div class="text-tiny">Products</div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <i class="icon-chevron-right"></i>
-                                        </li>
-                                        <li>
-                                            <div class="text-tiny">Edit  product</div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <form class="tf-section-2 form-add-product" method="POST" enctype="multipart/form-data"
-                                    action="{{route('admin.products.store')}}">
-                                    @csrf
-                                    <div class="wg-box">
-                                        <fieldset class="name">
-                                            <div class="body-title mb-10">Product name <span class="tf-color-1">*</span>
-                                            </div>
-                                            <input class="mb-10" type="text" placeholder="Enter product name" name="name" tabindex="0" value="{{$product->name}}" aria-required="true" required="">
-                                            <div class="text-tiny">Do not exceed 100 characters when entering the product name.</div>
-                                        </fieldset>
-                                        @error('name') <span class="alert alert-danger text-center">{{$message}}</span> @enderror
-                                        
+    <div class="main-content-inner">
+        <!-- main-content-wrap -->
+        <div class="main-content-wrap">
+            <div class="flex items-center flex-wrap justify-between gap20 mb-27">
+                <h3>Add Product</h3>
+                <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
+                    <li>
+                        <a href="{{ route('admin.products') }}">
+                            <div class="text-tiny">Dashboard</div>
+                        </a>
+                    </li>
+                    <li>
+                        <i class="icon-chevron-right"></i>
+                    </li>
+                    <li>
+                        <a href="all-product.html">
+                            <div class="text-tiny">Products</div>
+                        </a>
+                    </li>
+                    <li>
+                        <i class="icon-chevron-right"></i>
+                    </li>
+                    <li>
+                        <div class="text-tiny">Edit product</div>
+                    </li>
+                </ul>
+            </div>
+            <form class="tf-section-2 form-add-product" method="POST" enctype="multipart/form-data"
+                action="{{ route('admin.products.store') }}">
+                @csrf
+                <input type="hidden" name="id" value="{{ $product->id }}">
+                <div class="wg-box">
+                    <fieldset class="name">
+                        <div class="body-title mb-10">Product name <span class="tf-color-1">*</span>
+                        </div>
+                        <input class="mb-10" type="text" placeholder="Enter product name" name="name" tabindex="0"
+                            value="{{ $product->name }}" aria-required="true" required="">
+                        <div class="text-tiny">Do not exceed 100 characters when entering the product name.</div>
+                    </fieldset>
+                    @error('name')
+                        <span class="alert alert-danger text-center">{{ $message }}</span>
+                    @enderror
+
 
                     <fieldset class="name">
                         <div class="body-title mb-10">Slug <span class="tf-color-1">*</span></div>
@@ -96,7 +100,8 @@
 
                     <fieldset class="shortdescription">
                         <div class="body-title mb-10">Short Description <span class="tf-color-1">*</span></div>
-                        <textarea class="mb-10 ht-150" name="short_description" placeholder="Short Description" tabindex="0"  aria-required="true" required=""><?php echo $product->short_description  ?></textarea>
+                        <textarea class="mb-10 ht-150" name="short_description" placeholder="Short Description" tabindex="0"
+                            aria-required="true" required=""><?php echo $product->short_description; ?></textarea>
                         <div class="text-tiny">Do not exceed 100 characters when entering the
                             product name.</div>
                     </fieldset>
@@ -108,7 +113,8 @@
                     <fieldset class="description">
                         <div class="body-title mb-10">Description <span class="tf-color-1">*</span>
                         </div>
-                        <textarea class="mb-10" name="description" placeholder="Description" tabindex="0" aria-required="true" required=""><?php echo $product->description  ?></textarea>
+                        <textarea class="mb-10" name="description" placeholder="Description" tabindex="0" aria-required="true"
+                            required=""><?php echo $product->description; ?></textarea>
                         <div class="text-tiny">Do not exceed 100 characters when entering the
                             product name.</div>
                     </fieldset>
@@ -173,14 +179,13 @@
                         <span class="alert alert-danger text-center">{{ $message }}</span>
                     @enderror
 
-                    {{-- {{dd($product)}} --}}
 
                     <div class="cols gap22">
                         <fieldset class="name">
                             <div class="body-title mb-10">Regular Price <span class="tf-color-1">*</span></div>
-                            <input class="mb-10" type="number" placeholder="Enter regular price" name="regular_price"
-                                tabindex="0" aria-required="true"
-                                value="{{ $product->regular_price }}" required="">
+                            <input class="mb-10" type="text" placeholder="Enter regular price" name="regular_price"
+                                tabindex="0" aria-required="true" value="{{ $product->regular_price }}"
+                                required="">
                         </fieldset>
                         @error('regular_price')
                             <span class="alert alert-danger text-center">{{ $message }}</span>
@@ -225,7 +230,8 @@
                                     <option value="instock" {{ $product->stock_status == 'instock' ? 'selected' : '' }}>
                                         InStock</option>
                                     <option value="outofstock"
-                                        {{ $product->stock_status == 'outofstock' ? 'selected' : '' }}>Out of Stock</option>
+                                        {{ $product->stock_status == 'outofstock' ? 'selected' : '' }}>Out of Stock
+                                    </option>
                                 </select>
                             </div>
                         </fieldset>
@@ -249,7 +255,7 @@
 
                     </div>
                     <div class="cols gap10">
-                        <button class="tf-button w-full" type="submit">Add product</button>
+                        <button class="tf-button w-full" type="submit">Update product</button>
                     </div>
                 </div>
             </form>
@@ -262,36 +268,35 @@
 @push('scripts')
     <script>
         $(function() {
-            $("#myFile").on("change", function(e) {
-                const photop = $("#myFile");
-                const [file] = this.files;
-                if (file) {
-                    $("#imgpreview img").attr("src", URL.createObjectURL(file));
-                    $("#imgpreview").show();
+                    $("#myFile").on("change", function(e) {
+                        const photop = $("#myFile");
+                        const [file] = this.files;
+                        if (file) {
+                            $("#imgpreview img").attr("src", URL.createObjectURL(file));
+                            $("#imgpreview").show();
+                        }
+                    });
+
+                    $("#gFile").on("change", function(e) {
+                            const photoImp = $("#gFile");
+                            const gphotos = this.files;
+
+                            $.each(gphotos, function(key, val) {
+                                    $("#galUpload").prepend( < div class = "item gitems" > < img src =
+                                        "${URL.createObjectURL(val)}" / > < /div>);
+                                    });
+                            });
+
+
+                        $("input[name='name']").on("change", function() {
+                            $("input[name='slug']").val(StringToSlug($(this).val()));
+                        });
+                    });
+
+                function StringToSlug(Text) {
+                    return Text.toLowerCase()
+                        .replace(/\W+|_/g, "-")
+                        .replace(/^-+|-+$/g, "");
                 }
-            });
-
-            $("#gFile").on("change", function(e) {
-                const photoImp = $("#gFile");
-                const gphotos = this.files;
-
-                $.each(gphotos, function(key, val) {
-                    $("#galUpload").prepend(
-                        `<div class="item gitems"><img src="${URL.createObjectURL(val)}" /></div>`
-                        );
-                });
-            });
-
-
-            $("input[name='name']").on("change", function() {
-                $("input[name='slug']").val(StringToSlug($(this).val()));
-            });
-        });
-
-        function StringToSlug(Text) {
-            return Text.toLowerCase()
-                .replace(/\W+|_/g, "-")
-                .replace(/^-+|-+$/g, "");
-        }
     </script>
 @endpush
