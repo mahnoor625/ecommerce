@@ -317,7 +317,7 @@ public function product_edit($id)
     $categories = Category::select('id', 'name')->orderBy('name')->get();
     $brands = Brand::select('id', 'name')->orderBy('name')->get();
     
-    return view('admin.product-edit', compact('product', 'categories', 'brands'));
+    return view('admin.products_edit', compact('product', 'categories', 'brands'));
 }
 
 
