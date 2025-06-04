@@ -28,8 +28,9 @@
                 </ul>
             </div>
             <form class="tf-section-2 form-add-product" method="POST" enctype="multipart/form-data"
-                action="{{ route('admin.products.store') }}">
+                action="{{ route('admin.products.update') }}">
                 @csrf
+                @method('PUT')
                 <input type="hidden" name="id" value="{{ $product->id }}">
                 <div class="wg-box">
                     <fieldset class="name">

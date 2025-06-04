@@ -4,14 +4,24 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StoreController;
 use App\Http\middleware\AuthAdmin;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 use  App\Http\Controllers\UserController;
+use  App\Http\Controllers\ShopController;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
  Route::get('/',[StoreController::class,'index']);
 Auth::routes();
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+Route::get('/shop', [App\Http\Controllers\ShopController::class, 'index'])->name('shop.index');
+Route::get('/shop/{product_slug}', [ShopController::class, 'product_detail'])->name('shop.product.detail');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
+
 
 
 Route::middleware(['auth'])->group(function(){
@@ -39,6 +49,9 @@ Route::middleware(['auth',AuthAdmin::class])->group(function(){
     Route:: get('/admin/products/add',[AdminController::class,'addProduct'])->name('admin.products.add');
     Route::post('/admin/products/store',[AdminController::class,'product_store'])->name('admin.products.store');
     Route::get('/admin/products/{id}/edit',[AdminController::class,'product_edit'])->name('admin.products.edit');
+    Route::put('/admin/products/update', [AdminController::class, 'product_update'])->name('admin.products.update');
+    Route::delete('/admin/products/{id}/delete', [AdminController::class, 'product_delete'])->name('admin.products.delete');
+
 
 
 
