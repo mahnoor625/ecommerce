@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use SurfSideMedia\ShoppingCart\Facades\Cart;
-
+use Surfsidemedia\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
 {
