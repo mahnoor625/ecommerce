@@ -23,7 +23,7 @@
           <span class="checkout-steps__item-number">03</span>
           <span class="checkout-steps__item-title">
             <span>Confirmation</span>
-            <em>Review And Submit Your Order</em>
+            <em>Review And Submit Your Order Oreder</em>
           </span>
         </a>
       </div>
